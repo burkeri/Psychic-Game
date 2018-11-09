@@ -6,3 +6,61 @@ var letters = ["a", "b", "c", "d", "e",
                 "p", "q", "r", "s", "t",
                 "u", "v", "w", "x", "y",
                 "z"];
+
+let randomLetter = Math.floor(Math.random() * 25);
+var guessedLetters = [];
+var numWins = 0;
+var numLosses = 0;
+var numGuesses = 10;
+
+var guessed = document.getElementById("guessed");
+var numberGuesses = document.getElementById("number-guesses");
+var numberWins = document.getElementById("number-wins");
+var numberLosses = document.getElementById("number-losses");
+
+
+// Functions
+
+function initialiseGame () {
+    randomLetter =  Math.floor(Math.random() * 25);
+    letters[randomLetter];
+    guessedLetters = [];
+    numGuesses = 10;
+    numberGuesses.textContent = numGuesses;
+    console.log(letters[randomLetter]);
+}
+
+function matchKey () {
+
+    var userGuess = event.key.toLocaleLowerCase();
+
+    if (userGuess === letters[randomLetter]) {
+        console.log("Yay!");
+        numWins++;
+        numberWins.textContent = numWins;
+        initialiseGame();
+    } 
+    else if (numGuesses === 1) {
+        initialiseGame();
+        numLosses++;
+        numberLosses.textContent = numLosses;
+    }
+    else {
+        console.log("Boo!");
+        numGuesses--;
+        numberGuesses.textContent = numGuesses;
+    }
+}
+
+// Game Mechanics
+
+numberWins.textContent = numWins;
+numberLosses.textContent = numLosses;
+initialiseGame();
+
+document.onkeyup = function () {
+    matchKey();
+}
+
+
+
