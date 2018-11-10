@@ -1,4 +1,6 @@
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // VARIABLES
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 var letters = ["a", "b", "c", "d", "e",
                 "f", "g", "h", "i", "j",
@@ -19,8 +21,9 @@ var numberWins = document.getElementById("number-wins");
 var numberLosses = document.getElementById("number-losses");
 var display = document.getElementById("display");
 
-
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // FUNCTIONS
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // start or reset the game
 function initialiseGame () {
@@ -30,7 +33,7 @@ function initialiseGame () {
     letters[randomLetter];
     // set the guessed letter string to empty
     guessedLetters = "";
-    // reset number of guesses to 10 and display it in the dom
+    // reset number of guesses to 10 and displays
     numGuesses = 10;
     numberGuesses.textContent = numGuesses;
 
@@ -78,7 +81,9 @@ function matchKey () {
     }
 }
 
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // GAME MECHANICS
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // displays inital wins score of 0
 numberWins.textContent = numWins;
