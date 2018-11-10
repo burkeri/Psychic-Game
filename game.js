@@ -2,6 +2,7 @@
 // VARIABLES
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+// array for computer to choose from
 var letters = ["a", "b", "c", "d", "e",
                 "f", "g", "h", "i", "j",
                 "k", "l", "m", "n", "o",
@@ -9,17 +10,20 @@ var letters = ["a", "b", "c", "d", "e",
                 "u", "v", "w", "x", "y",
                 "z"];
 
+// global variables
 let randomLetter = Math.floor(Math.random() * 25);
 var guessedLetters = "";
 var numWins = 0;
 var numLosses = 0;
 var numGuesses = 10;
 
+// html reference variables
 var guessed = document.getElementById("guessed");
 var numberGuesses = document.getElementById("number-guesses");
 var numberWins = document.getElementById("number-wins");
 var numberLosses = document.getElementById("number-losses");
 var display = document.getElementById("display");
+var question = document.getElementById("question");
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // FUNCTIONS
@@ -28,16 +32,19 @@ var display = document.getElementById("display");
 // start or reset the game
 function initialiseGame () {
 
+    // hide the answer and show ?
+    display.style.display = "none";
+    question.style.display = "inline";
     // generate new random letter
     randomLetter =  Math.floor(Math.random() * 25);
     letters[randomLetter];
     // set the guessed letter string to empty
     guessedLetters = "";
-    // reset number of guesses to 10 and displays
+    // reset number of guesses to 10 and display
     numGuesses = 10;
     numberGuesses.textContent = numGuesses;
 
-    // tester - DELETE ON DEPLOY
+    // TESTER - DELETE ON DEPLOY
     console.log(letters[randomLetter]);
 }
 
@@ -49,26 +56,28 @@ function matchKey () {
 
     // if the guessed letter is correct...
     if (userGuess === letters[randomLetter]) {
-        //display the letter and make it green
-        display.classList.add("correct");
-        display.innerHTML = userGuess;
+        // show the the answer and hide the ?       
+        display.textContent = userGuess;
+        display.style.display = "inline";
+        question.style.display = "none";
         // increase the number of wins by 1 and display new score
         numWins++;
         numberWins.textContent = numWins;
         // restart the game
-        initialiseGame();
+        setTimeout(initialiseGame, 1500);
+       
     } 
     // if the user runs out of guesses...
     else if (numGuesses === 1) {
         // restart the game
         initialiseGame();
-        // increase the number of losses by 1 and displat new score
+        // increase the number of losses by 1 and display new score
         numLosses++;
         numberLosses.textContent = numLosses;
     }
     // if the user chooses the wrong letter...
     else {
-        // tester - DELETE ON DEPLOY
+        // TESTER - DELETE ON DEPLOY
         console.log("Boo!");
         // add the input to the guessedLetters string
         guessedLetters += userGuess;
