@@ -8,7 +8,7 @@ var letters = ["a", "b", "c", "d", "e",
                 "z"];
 
 let randomLetter = Math.floor(Math.random() * 25);
-var guessedLetters = [];
+var guessedLetters = "";
 var numWins = 0;
 var numLosses = 0;
 var numGuesses = 10;
@@ -17,6 +17,7 @@ var guessed = document.getElementById("guessed");
 var numberGuesses = document.getElementById("number-guesses");
 var numberWins = document.getElementById("number-wins");
 var numberLosses = document.getElementById("number-losses");
+var display = document.getElementById("display");
 
 
 // Functions
@@ -24,7 +25,7 @@ var numberLosses = document.getElementById("number-losses");
 function initialiseGame () {
     randomLetter =  Math.floor(Math.random() * 25);
     letters[randomLetter];
-    guessedLetters = [];
+    guessedLetters = "";
     numGuesses = 10;
     numberGuesses.textContent = numGuesses;
     console.log(letters[randomLetter]);
@@ -35,7 +36,8 @@ function matchKey () {
     var userGuess = event.key.toLocaleLowerCase();
 
     if (userGuess === letters[randomLetter]) {
-        console.log("Yay!");
+        document.getElementById("display").style.color = "#17C800";
+        display.textContent = userGuess;
         numWins++;
         numberWins.textContent = numWins;
         initialiseGame();
@@ -47,8 +49,11 @@ function matchKey () {
     }
     else {
         console.log("Boo!");
+        guessedLetters += userGuess;
+        guessed.textContent = guessedLetters;
         numGuesses--;
         numberGuesses.textContent = numGuesses;
+
     }
 }
 

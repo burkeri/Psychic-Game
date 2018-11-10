@@ -2,6 +2,8 @@
 
 <head>
     <title>Psychic Game</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -9,42 +11,36 @@
 
 <body>
 
-    <style>
-
-        span {
-            letter-spacing: 10px;
-            font-size: 30px;
-            color: #423789;
-        }
-    
-    </style>
-
     <h1>Psychic Game</h1>
 
     <h2>Guess what letter I am thinking of.</h2>
 
-    <figure></figure><div id="random-letter" style="display: none"></div>
+    <figure id="display">?</figure>
 
     <br>
     <br>
 
-    <h3>Letters Guessed:</h3>
-    <span id="guessed"></span>
+    <div class="float">
 
-    <br>
+        <h3>Letters Guessed:</h3>
+        <span id="guessed"></span>
 
-    <h3>Guesses Left:</h3>
-    <span id="number-guesses"></span>
+        <br>
 
-    <br>
+        <h3>Guesses Left:</h3>
+        <span id="number-guesses"></span>
 
-    <h3>Wins:</h3>
-    <span id="number-wins"></span>
+        <br>
 
-    <br>
+        <h3>Wins:</h3>
+        <span id="number-wins"></span>
 
-    <h3>Losses:</h3>
-    <span id="number-losses"></span>
+        <br>
+
+        <h3>Losses:</h3>
+        <span id="number-losses"></span>
+
+    </div>
 
 
 
