@@ -10,6 +10,12 @@ var letters = ["a", "b", "c", "d", "e",
                 "u", "v", "w", "x", "y",
                 "z"];
 
+// unicode for non-letter characters
+var codes = [8, 9, 13, 16, 17, 18, 19, 20,
+                27, 33, 34, 5, 36, 7, 38, 39, 
+                40, 45, 46, 48, 49, 50, 51, 52,
+                53, 54, 55, 56, 57];
+
 // global variables
 let randomLetter = Math.floor(Math.random() * 25);
 var guessedLetters = "";
@@ -40,6 +46,7 @@ function initialiseGame () {
     letters[randomLetter];
     // set the guessed letter string to empty
     guessedLetters = "";
+    guessed.textContent = guessedLetters;
     // reset number of guesses to 10 and display
     numGuesses = 10;
     numberGuesses.textContent = numGuesses;
@@ -75,6 +82,9 @@ function matchKey () {
         numLosses++;
         numberLosses.textContent = numLosses;
     }
+    else if (userGuess.length > 1) {
+        return false;
+    }
     // if the user chooses the wrong letter...
     else {
         // TESTER - DELETE ON DEPLOY
@@ -88,6 +98,7 @@ function matchKey () {
         numberGuesses.textContent = numGuesses;
 
     }
+
 }
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -105,6 +116,7 @@ initialiseGame();
 
 // records user input and runs appropriate function
 document.onkeyup = function () {
+    // nonLetter();
     matchKey();
 }
 
