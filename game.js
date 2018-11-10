@@ -10,12 +10,6 @@ var letters = ["a", "b", "c", "d", "e",
                 "u", "v", "w", "x", "y",
                 "z"];
 
-// unicode for non-letter characters
-var codes = [8, 9, 13, 16, 17, 18, 19, 20,
-                27, 33, 34, 5, 36, 7, 38, 39, 
-                40, 45, 46, 48, 49, 50, 51, 52,
-                53, 54, 55, 56, 57];
-
 // global variables
 let randomLetter = Math.floor(Math.random() * 25);
 var guessedLetters = "";
@@ -38,39 +32,37 @@ var question = document.getElementById("question");
 // start or reset the game
 function initialiseGame () {
 
-    // hide the answer and show ?
+    // hide the answer and show "?"
     display.style.display = "none";
     question.style.display = "inline";
     // generate new random letter
     randomLetter =  Math.floor(Math.random() * 25);
     letters[randomLetter];
-    // set the guessed letter string to empty
+    // set the guessed letter string to empty and display
     guessedLetters = "";
     guessed.textContent = guessedLetters;
     // reset number of guesses to 10 and display
     numGuesses = 10;
     numberGuesses.textContent = numGuesses;
 
-    // TESTER - DELETE ON DEPLOY
-    console.log(letters[randomLetter]);
 }
 
-// check if user input matches
+// check if user keystroke matches random letter
 function matchKey () {
 
-    // creates input variable and coverts to lower case
+    // creates keystroke variable and converts to lower case
     var userGuess = event.key.toLocaleLowerCase();
 
     // if the guessed letter is correct...
     if (userGuess === letters[randomLetter]) {
-        // show the the answer and hide the ?       
+        // show the the answer and hide the "? ""      
         display.textContent = userGuess;
         display.style.display = "inline";
         question.style.display = "none";
         // increase the number of wins by 1 and display new score
         numWins++;
         numberWins.textContent = numWins;
-        // restart the game
+        // restart the game after 1.5 seconds
         setTimeout(initialiseGame, 1500);
        
     } 
@@ -82,13 +74,13 @@ function matchKey () {
         numLosses++;
         numberLosses.textContent = numLosses;
     }
+    // if user keystroke is not a letter...
     else if (userGuess.length > 1) {
+        // do not record keystroke
         return false;
     }
     // if the user chooses the wrong letter...
     else {
-        // TESTER - DELETE ON DEPLOY
-        console.log("Boo!");
         // add the input to the guessedLetters string
         guessedLetters += userGuess;
         // display the string on the page
@@ -116,7 +108,6 @@ initialiseGame();
 
 // records user input and runs appropriate function
 document.onkeyup = function () {
-    // nonLetter();
     matchKey();
 }
 
