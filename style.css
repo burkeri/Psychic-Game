@@ -22,7 +22,7 @@ span {
     font-size: 300px;
 }
 
-#correct {
-    color: #17C800;
+.wrong {
+    color: red;
 }
 
